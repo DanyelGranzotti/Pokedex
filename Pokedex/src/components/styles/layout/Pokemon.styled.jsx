@@ -18,6 +18,10 @@ export const MainContainer = styled.div`
   padding: 93px 0;
   text-family: ${(props) => props.theme.fonts.secondary};
   background-color: ${(props) => BackgroundColor(props)};
+
+  @media (max-width: ${(props) => props.theme.mobileInPx}) {
+    height: fit-content;
+  }
 `;
 
 export const Info = styled.div`
@@ -96,6 +100,11 @@ export const Content = styled.div`
   align-items: center;
   width: 60%;
   background-color: ${(props) => props.theme.colors.textTransparentWhite};
+
+  @media (max-width: ${(props) => props.theme.mobileInPx}) {
+    width: 100%;
+    text-align: center;
+  }
 `;
 
 export const Description = styled.div`
@@ -108,6 +117,11 @@ export const Description = styled.div`
   background-color: white;
   border-radius: 8px;
   margin: 0 auto;
+
+  @media (max-width: ${(props) => props.theme.mobileInPx}) {
+    width: 80%;
+    flex-direction: column;
+  }
 `;
 
 export const DescriptionText = styled.p`

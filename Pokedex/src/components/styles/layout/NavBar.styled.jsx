@@ -53,6 +53,10 @@ export const NavItem = styled.li`
     font-weight: ${(props) => props.theme.fonts.weight.bold};
     border-bottom: 3px solid ${(props) => props.theme.colors.textColor500};
   }
+
+  @media (max-width: ${(props) => props.theme.mobileInPx}) {
+    font-size: ${(props) => props.theme.fonts.size.small};
+  }
 `;
 
 export const StyledLink = styled(Link)`
