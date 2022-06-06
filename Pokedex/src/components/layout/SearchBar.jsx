@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { serchPokemonByName } from "../../api/pokeapi";
+
+import * as S from "../styles/layout/SearchBar.styled";
+import SearchIcon from "@mui/icons-material/Search";
 
 const SearchBar = (props) => {
   const { onSearch } = props;
@@ -12,17 +14,28 @@ const SearchBar = (props) => {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      onSearch(pokemonName);
+    }
+  };
+
   const onClickHandler = () => {
     onSearch(pokemonName);
   };
 
   return (
-    <>
-      <div>
-        <input type="text" placeholder="Search" onChange={onChangeHandler} />
-        <button onClick={onClickHandler}>Search</button>
-      </div>
-    </>
+    <S.SearchBarContainer>
+      <S.Input
+        type="text"
+        placeholder="Pesquisar pokemon"
+        onChange={onChangeHandler}
+        onKeyDown={handleKeyDown}
+      />
+      <S.Button onClick={onClickHandler}>
+        <SearchIcon />
+      </S.Button>
+    </S.SearchBarContainer>
   );
 };
 
