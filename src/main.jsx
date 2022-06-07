@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import Home from "./components/layout/Home";
 import Pokemon from "./components/layout/Pokemon";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./components/styles/Globals.styled";
@@ -11,6 +12,8 @@ const theme = {
   colors: {
     primary: "#FFFFFF",
     secondary: "#F2F2F2",
+    blue: "#48D0B0",
+    yellow: "#FFDA55",
     shadow: "rgba(1, 28, 64, 0.2)",
     shadowWeack: "#F4F5F4",
     shadowStrong: "rgba(1, 28, 64, 0.5)",
@@ -18,6 +21,7 @@ const theme = {
     textTransparentWhite: "rgba(255, 255, 255, 0.25)",
     textColor100: "#767676",
     textColor300: "#212121CC",
+    textColor400: "#282828",
     textColor500: "#171414",
   },
   fonts: {
@@ -55,8 +59,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <ThemeProvider theme={theme}>
       <Router>
         <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/:id" element={<Pokemon />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/pokemons" element={<App />} />
+          <Route path="/pokemons/:id" element={<Pokemon />} />
         </Routes>
       </Router>
     </ThemeProvider>

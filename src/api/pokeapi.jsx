@@ -14,7 +14,7 @@ export const serchPokemonByName = async (pokemonName) => {
 // Metodo que recebe o id do pokemon e retorna os dados do mesmo.
 export const serchPokemonById = async (id) => {
   try {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon${id}`);
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const data = await response.json();
     return data;
   } catch (error) {

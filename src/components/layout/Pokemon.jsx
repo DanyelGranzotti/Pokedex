@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 import { serchPokemonById } from "../../api/pokeapi";
 import { formatIdNumber } from "../utils/FormatData";
@@ -17,15 +17,15 @@ const normalise = (value) => (value * 100) / 150;
 const noramalisetotal = (value) => (value * 100) / 400;
 
 const Pokemon = () => {
-  const location = useLocation();
-  const id = location.pathname;
+  const location = useParams();
+
   const [pokemon, setPokemon] = useState("");
   const [description, setDescription] = useState("");
   const [genderRate, setGenderRate] = useState(0);
 
-  const catchPokemon = async (id) => {
+  const catchPokemon = async () => {
     try {
-      const response = await serchPokemonById(id);
+      const response = await serchPokemonById(location.id);
       setPokemon(response);
     } catch (error) {
       console.log(error);
@@ -37,7 +37,7 @@ const Pokemon = () => {
     locale = navigator.language
   ) => first.toLocaleUpperCase(locale) + rest.join("");
 
-  catchPokemon(id);
+  catchPokemon();
 
   const getDescription = async (name) => {
     try {

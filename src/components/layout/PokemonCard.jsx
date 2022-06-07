@@ -12,7 +12,7 @@ const PokemonCard = (props) => {
 
   return (
     <S.PokemonCardHolder
-      to={"/" + pokemon.id}
+      to={"/pokemons/" + pokemon.id}
       type={pokemon.types[0].type.name}
     >
       <S.IdHolder> #{formatIdNumber(pokemon.id)}</S.IdHolder>

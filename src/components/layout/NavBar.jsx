@@ -10,9 +10,11 @@ const NavBar = () => {
           <S.Logo src="/img/logo.svg" alt="pokemon-logo" />
         </S.LogoContainer>
         <S.Nav>
-          <S.NavItem>Home</S.NavItem>
           <S.NavItem>
-            <S.StyledLink to="/">Pokemons</S.StyledLink>
+            <S.StyledLink to="/">Home</S.StyledLink>
+          </S.NavItem>
+          <S.NavItem>
+            <S.StyledLink to="/pokemons">Pokemons</S.StyledLink>
           </S.NavItem>
           <S.NavItem>Contato</S.NavItem>
         </S.Nav>

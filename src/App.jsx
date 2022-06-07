@@ -1,13 +1,13 @@
 import React from "react";
 
 import NavBar from "./components/layout/NavBar";
-import Home from "./components/layout/Home";
+import PokedexHolder from "./components/layout/PokedexHolder";
 
 const App = () => {
   return (
     <>
       <NavBar />
-      <Home />
+      <PokedexHolder />
     </>
   );
 };
