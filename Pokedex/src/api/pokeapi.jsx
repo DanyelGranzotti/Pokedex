@@ -2,7 +2,7 @@
 export const serchPokemonByName = async (pokemonName) => {
   try {
     const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
+      `https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`
     );
     const data = await response.json();
     return data;
@@ -15,6 +15,19 @@ export const serchPokemonByName = async (pokemonName) => {
 export const serchPokemonById = async (id) => {
   try {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon${id}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Metodo que recebe a especie do pokemon e retorna os dados da mesmo.
+export const getPokemonBySpecies = async (name) => {
+  try {
+    const response = await fetch(
+      `https://pokeapi.co/api/v2/pokemon-species/${name}/`
+    );
     const data = await response.json();
     return data;
   } catch (error) {
@@ -39,19 +52,6 @@ export const getPokemonList = async (limit = 151, offset = 0) => {
 export const getPokemonData = async (url) => {
   try {
     const response = await fetch(url);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-// Metodo que recebe url e retorna descricao do pokemon.
-export const getPokemonDescription = async (name) => {
-  try {
-    const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon-species/${name}/`
-    );
     const data = await response.json();
     return data;
   } catch (error) {

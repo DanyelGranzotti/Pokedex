@@ -26,8 +26,10 @@ export const LogoContainer = styled(Link)`
 
 export const Logo = styled.img`
   width: 159px;
-  height: 60px;
   margin-left: 10vw;
+  @media (max-width: ${(props) => props.theme.mobileInPx}) {
+    width: 80px;
+  }
 `;
 
 export const Nav = styled.ul`
@@ -55,7 +57,7 @@ export const NavItem = styled.li`
   }
 
   @media (max-width: ${(props) => props.theme.mobileInPx}) {
-    font-size: ${(props) => props.theme.fonts.size.small};
+    font-size: ${(props) => props.theme.fonts.size.xsmall};
   }
 `;
 

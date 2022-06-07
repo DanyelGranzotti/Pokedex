@@ -24,6 +24,9 @@ export const Select = styled.select`
   color: ${(props) => props.theme.colors.textColor500};
   border-radius: 4px;
   outline: none;
+  @media (max-width: ${(props) => props.theme.mobileInPx}) {
+    width: 30%;
+  }
 `;
 
 export const Option = styled.option`

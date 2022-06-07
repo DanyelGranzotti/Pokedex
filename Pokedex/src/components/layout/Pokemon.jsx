@@ -3,24 +3,30 @@ import { useLocation } from "react-router-dom";
 
 import { serchPokemonById } from "../../api/pokeapi";
 import { formatIdNumber } from "../utils/FormatData";
-import { getPokemonDescription } from "../../api/pokeapi";
+import { getPokemonBySpecies } from "../../api/pokeapi";
 
 import NavBar from "./NavBar";
 import * as S from "../styles/layout/Pokemon.styled";
 import ScaleIcon from "@mui/icons-material/Scale";
-import StraightenIcon from "@mui/icons-material/Straighten";
+import FemaleIcon from "@mui/icons-material/Female";
+import MaleIcon from "@mui/icons-material/Male";
+
+import CustomLinearProgress from "./common/CustomLinearProgress";
+
+const normalise = (value) => (value * 100) / 150;
+const noramalisetotal = (value) => (value * 100) / 400;
 
 const Pokemon = () => {
   const location = useLocation();
   const id = location.pathname;
   const [pokemon, setPokemon] = useState("");
   const [description, setDescription] = useState("");
+  const [genderRate, setGenderRate] = useState(0);
 
   const catchPokemon = async (id) => {
     try {
       const response = await serchPokemonById(id);
       setPokemon(response);
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -35,7 +41,7 @@ const Pokemon = () => {
 
   const getDescription = async (name) => {
     try {
-      const response = await getPokemonDescription(name);
+      const response = await getPokemonBySpecies(name);
       const description = response.flavor_text_entries.find(
         (entry) => entry.language.name === "en"
       );
@@ -45,8 +51,28 @@ const Pokemon = () => {
     }
   };
 
+  const getGenderRate = async (name) => {
+    try {
+      const response = await getPokemonBySpecies(name);
+      const rate = response.gender_rate;
+      setGenderRate(rate);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const totalStats = (stats) => {
+    let total = 0;
+    for (let index = 0; index < stats.length; index++) {
+      const element = stats[index];
+      total += element.base_stat;
+    }
+    return total;
+  };
+
   if (pokemon) {
     getDescription(pokemon.name);
+    getGenderRate(pokemon.name);
   }
 
   return (
@@ -79,46 +105,118 @@ const Pokemon = () => {
                 <S.Mains>
                   <S.Main>
                     <S.StatsMainContainer>
-                      <ScaleIcon /> {pokemon.weight} Kg
+                      <ScaleIcon />
+                      <S.MainTextContainer>
+                        {pokemon.weight / 10} Kg
+                      </S.MainTextContainer>
                     </S.StatsMainContainer>
+                    <S.SubtitleMain>Peso</S.SubtitleMain>
                   </S.Main>
                   <S.Main>
                     <S.StatsMainContainer>
-                      <StraightenIcon />
-                      {pokemon.height} m
+                      <S.CustomStraightenIcon />
+                      <S.MainTextContainer>
+                        {pokemon.height / 10} m
+                      </S.MainTextContainer>
                     </S.StatsMainContainer>
+                    <S.SubtitleMain>Altura</S.SubtitleMain>
                   </S.Main>
                   <S.MainMove>
-                    {capitalizeFirstLetter(pokemon.abilities[0].ability.name)}
+                    <S.StatsMainContainer>
+                      {capitalizeFirstLetter(pokemon.abilities[0].ability.name)}
+                    </S.StatsMainContainer>
+
+                    <S.SubtitleMain>Peso</S.SubtitleMain>
                   </S.MainMove>
                 </S.Mains>
 
+                <S.Gender>
+                  <S.GenderTitle>Gênero</S.GenderTitle>
+                  <S.GenderRate>
+                    <MaleIcon sx={{ color: "#6C79DB" }} />
+                    <S.GenderText>{(100 / 8) * (8 - genderRate)}%</S.GenderText>
+                  </S.GenderRate>
+                  <S.GenderRate>
+                    <FemaleIcon sx={{ color: "#F0729F" }} />
+                    <S.GenderText>{(100 / 8) * genderRate}%</S.GenderText>
+                  </S.GenderRate>
+                </S.Gender>
+
                 <S.Stats>
-                  <tr>
+                  <S.StatsHolder>
+                    <S.StatsDescription>Saúde</S.StatsDescription>
+                    <S.StatsValor>{pokemon.stats[0].base_stat}</S.StatsValor>
+
+                    <S.Graph>
+                      <CustomLinearProgress
+                        statusType={0}
+                        statusValue={normalise(pokemon.stats[0].base_stat)}
+                      />
+                    </S.Graph>
+                  </S.StatsHolder>
+                  <S.StatsHolder>
                     <S.StatsDescription>Ataque</S.StatsDescription>
                     <S.StatsValor>{pokemon.stats[1].base_stat}</S.StatsValor>
-                    {/* <td>Grafico </td> */}
-                  </tr>
-                  <tr>
+
+                    <S.Graph>
+                      <CustomLinearProgress
+                        statusType={1}
+                        statusValue={normalise(pokemon.stats[1].base_stat)}
+                      />
+                    </S.Graph>
+                  </S.StatsHolder>
+                  <S.StatsHolder>
                     <S.StatsDescription>Defesa</S.StatsDescription>
                     <S.StatsValor> {pokemon.stats[2].base_stat}</S.StatsValor>
-                    {/* <td>Grafico </td> */}
-                  </tr>
-                  <tr>
+                    <S.Graph>
+                      <CustomLinearProgress
+                        statusType={2}
+                        statusValue={normalise(pokemon.stats[2].base_stat)}
+                      />
+                    </S.Graph>
+                  </S.StatsHolder>
+                  <S.StatsHolder>
                     <S.StatsDescription> VI.Ataque</S.StatsDescription>
                     <S.StatsValor>{pokemon.stats[3].base_stat}</S.StatsValor>
-                    {/* <td>Grafico </td> */}
-                  </tr>
-                  <tr>
+                    <S.Graph>
+                      <CustomLinearProgress
+                        statusType={3}
+                        statusValue={normalise(pokemon.stats[3].base_stat)}
+                      />
+                    </S.Graph>
+                  </S.StatsHolder>
+                  <S.StatsHolder>
                     <S.StatsDescription>VI.Defesa</S.StatsDescription>
                     <S.StatsValor>{pokemon.stats[4].base_stat}</S.StatsValor>
-                    {/* <td>Grafico </td> */}
-                  </tr>
-                  <tr>
+                    <S.Graph>
+                      <CustomLinearProgress
+                        statusType={4}
+                        statusValue={normalise(pokemon.stats[4].base_stat)}
+                      />
+                    </S.Graph>
+                  </S.StatsHolder>
+                  <S.StatsHolder>
                     <S.StatsDescription>Velocidade</S.StatsDescription>
                     <S.StatsValor> {pokemon.stats[5].base_stat}</S.StatsValor>
-                    {/* <td>Grafico </td> */}
-                  </tr>
+                    <S.Graph>
+                      <CustomLinearProgress
+                        statusType={5}
+                        statusValue={normalise(pokemon.stats[5].base_stat)}
+                      />
+                    </S.Graph>
+                  </S.StatsHolder>
+                  <S.StatsHolder>
+                    <S.StatsDescription>Total</S.StatsDescription>
+                    <S.StatsValor>{totalStats(pokemon.stats)}</S.StatsValor>
+                    <S.Graph>
+                      <CustomLinearProgress
+                        statusType={10}
+                        statusValue={normalise(
+                          noramalisetotal(totalStats(pokemon.stats))
+                        )}
+                      />
+                    </S.Graph>
+                  </S.StatsHolder>
                 </S.Stats>
               </S.Content>
             </S.Description>

@@ -12,15 +12,20 @@ export const PokemonCardHolder = styled(Link)`
   border-radius: 15px;
   background-color: ${(props) => BackgroundColor(props)};
   font-family: ${(props) => props.theme.fonts.secondary};
+  @media (max-width: ${(props) => props.theme.mobileInPx}) {
+    min-width: 110px;
+  }
 `;
 
 export const IdHolder = styled.div`
   width: 100%;
-
   text-align: right;
   font-size: ${(props) => props.theme.fonts.size.medium};
   font-weight: ${(props) => props.theme.fonts.weight.bold};
   color: ${(props) => props.theme.colors.textTransparent};
+  @media (max-width: ${(props) => props.theme.mobileInPx}) {
+    font-size: ${(props) => props.theme.fonts.size.small};
+  }
 `;
 
 export const Content = styled.div`
@@ -43,6 +48,9 @@ export const Name = styled.div`
   font-size: ${(props) => props.theme.fonts.size.large};
   font-weight: ${(props) => props.theme.fonts.weight.medium};
   color: ${(props) => props.theme.colors.primary};
+  @media (max-width: ${(props) => props.theme.mobileInPx}) {
+    font-size: ${(props) => props.theme.fonts.size.small};
+  }
 `;
 
 export const Types = styled.ul`
@@ -65,6 +73,9 @@ export const Type = styled.li`
   border-radius: 38px;
   background-color: ${(props) => props.theme.colors.textTransparentWhite};
   padding: 0.2rem 1rem;
+  @media (max-width: ${(props) => props.theme.mobileInPx}) {
+    font-size: ${(props) => props.theme.fonts.size.xxsmall};
+  }
 `;
 
 export const Sprite = styled.img`

@@ -12,12 +12,14 @@ const Pokedex = (props) => {
       {loading ? (
         <CircularProgress />
       ) : (
-        <S.PokedexHolder>
-          {pokemonList &&
-            pokemonList.map((pokemon, index) => {
-              return <PokemonCard key={index} pokemon={pokemon} />;
-            })}
-        </S.PokedexHolder>
+        <>
+          <S.PokedexHolder>
+            {pokemonList &&
+              pokemonList.map((pokemon, index) => {
+                return <PokemonCard key={index} pokemon={pokemon} />;
+              })}
+          </S.PokedexHolder>
+        </>
       )}
     </>
   );
