@@ -122,11 +122,10 @@ const Pokemon = () => {
                     <S.SubtitleMain>Altura</S.SubtitleMain>
                   </S.Main>
                   <S.MainMove>
-                    <S.StatsMainContainer>
+                    <S.StatsMainMoveContainer>
                       {capitalizeFirstLetter(pokemon.abilities[0].ability.name)}
-                    </S.StatsMainContainer>
-
-                    <S.SubtitleMain>Peso</S.SubtitleMain>
+                    </S.StatsMainMoveContainer>
+                    <S.SubtitleMain>Poder Principal</S.SubtitleMain>
                   </S.MainMove>
                 </S.Mains>
 

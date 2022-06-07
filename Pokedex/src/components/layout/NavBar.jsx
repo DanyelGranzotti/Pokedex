@@ -7,7 +7,7 @@ const NavBar = () => {
     <>
       <S.NavBar>
         <S.LogoContainer to="/">
-          <S.Logo src="../../../public/img/logo.svg" alt="pokemon-logo" />
+          <S.Logo src="/img/logo.svg" alt="pokemon-logo" />
         </S.LogoContainer>
         <S.Nav>
           <S.NavItem>Home</S.NavItem>

@@ -8,7 +8,7 @@ export const Body = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: fit-content;
 `;
 
 export const MainContainer = styled.div`
@@ -115,16 +115,18 @@ export const Description = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 70%;
+  width: 70vw;
   aspect-ratio: 2 / 1;
   align-items: center;
   text-align: center;
   background-color: white;
   border-radius: 8px;
   margin: 0 auto;
+  padding-right: 2rem;
 
   @media (max-width: ${(props) => props.theme.mobileInPx}) {
-    width: 90%;
+    padding-right: 0;
+    width: 90vw;
     flex-direction: column;
     aspect-ratio: 1 / 2;
   }
@@ -155,18 +157,22 @@ export const Main = styled.li`
 `;
 
 export const MainMove = styled.li`
+  margin-top: 1rem;
   width 30%;
-  margin: 1em;
-  margin: auto 0;
 `;
 
 export const StatsMainContainer = styled.div`
   display: flex;
   justify-content: center;
-
   width: 100%;
   font-weight: ${(props) => props.theme.fonts.weight.bold};
-  margin: auto 0;
+`;
+
+export const StatsMainMoveContainer = styled.p`
+  width: 100%;
+  margin: 0;
+  padding: 0.2rem 0;
+  font-weight: ${(props) => props.theme.fonts.weight.bold};
 `;
 
 export const CustomStraightenIcon = styled(StraightenIcon)`
@@ -181,6 +187,7 @@ export const MainTextContainer = styled.p`
 export const SubtitleMain = styled.p`
   font-size: ${(props) => props.theme.fonts.size.xsmall};
   color: ${(props) => props.theme.colors.textColor300};
+  align-self: baseline;
 `;
 
 export const Gender = styled.div`
