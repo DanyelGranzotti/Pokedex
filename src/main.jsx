@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import Home from "./components/layout/Home";
 import Pokemon from "./components/layout/Pokemon";
+import Contacts from "./components/layout/Contacts";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./components/styles/Globals.styled";
 
@@ -62,6 +63,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/" element={<Home />} />
           <Route path="/pokemons" element={<App />} />
           <Route path="/pokemons/:id" element={<Pokemon />} />
+          <Route path="/contacts" element={<Contacts />} />
         </Routes>
       </Router>
     </ThemeProvider>

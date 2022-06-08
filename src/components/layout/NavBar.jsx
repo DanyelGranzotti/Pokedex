@@ -16,7 +16,9 @@ const NavBar = () => {
           <S.NavItem>
             <S.StyledLink to="/pokemons">Pokemons</S.StyledLink>
           </S.NavItem>
-          <S.NavItem>Contato</S.NavItem>
+          <S.NavItem>
+            <S.StyledLink to="/contacts">Contato</S.StyledLink>
+          </S.NavItem>
         </S.Nav>
       </S.NavBar>
     </>
