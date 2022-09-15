@@ -36,7 +36,7 @@ export const getPokemonBySpecies = async (name) => {
 };
 
 // Metodo que recebe o numero maximos de pokemons e retorna uma lista com os dados dos pokemons desde o id 0 até o id limite.
-export const getPokemonList = async (limit = 151, offset = 0) => {
+export const getPokemonList = async (limit, offset = 0) => {
   try {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`

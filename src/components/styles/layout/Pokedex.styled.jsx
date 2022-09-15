@@ -6,7 +6,7 @@ export const PokedexHolder = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: 75%;
+  width: 85%;
   margin: 0 auto;
   @media (max-width: ${(props) => props.theme.mobileInPx}) {
     width: 90%;

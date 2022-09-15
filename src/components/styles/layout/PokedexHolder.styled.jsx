@@ -9,7 +9,7 @@ export const MainContainer = styled.div`
   background: ${(props) => props.theme.colors.primary};
 `;
 
-export const TitleContainer = styled.div`
+export const TitleContainer = styled.h1`
   display: flex;
   justify-content: center;
   align-items: center;

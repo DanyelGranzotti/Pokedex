@@ -39,6 +39,7 @@ const theme = {
       xxlarge: "2rem",
       xxxlarge: "2.4rem",
       ultralarge: "3rem",
+      xultralarge: "3.5rem",
     },
     weight: {
       thin: "100",
@@ -46,6 +47,7 @@ const theme = {
       regular: "400",
       medium: "500",
       bold: "700",
+      extraBold: "800",
       black: "900",
     },
   },

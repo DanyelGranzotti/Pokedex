@@ -23,7 +23,11 @@ const Home = () => {
             </S.Main>
           </S.MainContainer>
           <S.ImageHolder>
-            <S.Image src="/img/Home.svg"></S.Image>
+            <S.Image
+              src="/img/Home.svg"
+              alt="pokemon"
+              figcaption="Imagem ilustrativa do pokemon Pikachu lançando uma pokebola"
+            ></S.Image>
           </S.ImageHolder>
         </S.Container>
       </S.Body>

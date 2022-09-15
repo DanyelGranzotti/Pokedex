@@ -22,8 +22,9 @@ export const Container = styled.main`
 
 export const MainContainer = styled.div`
   box-sizing: border-box;
-  width: 50%;
-  padding: 4rem 6rem;
+  width: 35%;
+  padding: 4rem 0;
+  margin-left: 10%;
   color: ${(props) => props.theme.colors.textColor400};
   font-family: ${(props) => props.theme.fonts.secondary};
   display: inline-block;
@@ -53,7 +54,7 @@ export const Main = styled.div`
 export const ImageHolder = styled.div`
   box-sizing: border-box;
   padding-top: 4rem;
-  width: 50%;
+  width: 55%;
   height: 100%;
   display: inline-block;
   overflow: hidden;
@@ -71,7 +72,8 @@ export const Image = styled.img`
 
 export const Title = styled.h1`
   font-size: ${(props) => props.theme.fonts.size.ultralarge};
-  font-weight: ${(props) => props.theme.fonts.weight.black};
+  font-height: 76px;
+  font-weight: ${(props) => props.theme.fonts.weight.extraBold};
   margin: 10px;
   @media (max-width: ${(props) => props.theme.mobileInPx}) {
     font-size: ${(props) => props.theme.fonts.size.xxxlarge};
@@ -80,11 +82,12 @@ export const Title = styled.h1`
 `;
 
 export const Text = styled.p`
-  width: 80%;
+  width: 75%;
   font-size: ${(props) => props.theme.fonts.size.small};
-  font-weight: ${(props) => props.theme.fonts.weight.light};
+  font-weight: ${(props) => props.theme.fonts.weight.regular};
   line-height: ${(props) => props.theme.fonts.size.xxlarge};
-  padding: 0 10px;
+  color: ${(props) => props.theme.colors.textColor400};
+  padding: 0 15px;
   @media (max-width: ${(props) => props.theme.mobileInPx}) {
     font-size: ${(props) => props.theme.fonts.size.xsmall};
     font-weight: ${(props) => props.theme.fonts.weight.light};
